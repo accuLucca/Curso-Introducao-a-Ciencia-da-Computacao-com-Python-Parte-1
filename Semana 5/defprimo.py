@@ -16,4 +16,3 @@ def isprime(n):
             i += 1
             if n - i == 1:
                 return 1
-print(maior_primo(7536))
