@@ -1,28 +1,28 @@
-def jogadaPC(n,m):
+def computador_escolhe_jogada(n,m):
 
-    jogadaPC = 1
-    while jogadaPC != m :
-        if (n - jogadaPC) % (m+1) == 0:
-            return jogadaPC 
+    computador_escolhe_jogada = 1
+    while computador_escolhe_jogada != m :
+        if (n - computador_escolhe_jogada) % (m+1) == 0:
+            return computador_escolhe_jogada 
         else: 
-            jogadaPC = jogadaPC + 1
-    return jogadaPC
+            computador_escolhe_jogada = computador_escolhe_jogada + 1
+    return computador_escolhe_jogada
 
-def jogadajogador(n,m):
+def usuario_escolhe_jogada(n,m):
 
     jogadaValida = False
     while not jogadaValida:
-        jogadajogador= int(input("Quantas peças você vai tirar?"))
-        if jogadajogador > m or jogadajogador < 1:
+        usuario_escolhe_jogada= int(input("Quantas peças você vai tirar?"))
+        if usuario_escolhe_jogada > m or usuario_escolhe_jogada < 1:
             print("\nOops! Jogada inválida! Tente de novo.")
         else:
             jogadaValida = True
-    return jogadajogador
+    return usuario_escolhe_jogada
 
 
 # partida
 
-# # n = numero de pecas totais no jogo
+# n = numero de pecas totais no jogo
 # m = numero maximo de pecas jogadas por rodada
 
 def partida():
@@ -36,7 +36,7 @@ def partida():
         VezDoPc = True
     while n > 0:
         if VezDoPc:
-            ComputadorRemove = jogadaPC(n,m)
+            ComputadorRemove = computador_escolhe_jogada(n,m)
             n = n - ComputadorRemove
             if ComputadorRemove == 1:
                 print("\n O computador tirou uma peça ")
@@ -44,7 +44,7 @@ def partida():
                 print("\n O computador tirou",ComputadorRemove,"peças")
             VezDoPc = False
         else:
-            JogadorRemove = jogadajogador(n,m)
+            JogadorRemove = usuario_escolhe_jogada(n,m)
             n = n- JogadorRemove            
             if JogadorRemove == 1:
                 print("\nVocê tirou uma peça")
@@ -55,6 +55,7 @@ def partida():
             print("\nAgora resta apenas uma peça no tabuleiro.")
         else: 
             print("\nAgora restam",n,"peças no tabuleiro.")
+    print("\nFim do jogo! O computador ganhou!")
 
 
 # campeonato
@@ -63,6 +64,9 @@ def campeonato():
     while contador > 0:
         partida()
         contador -= 1
+    print("\nFim do jogo! O computador ganhou!")
+    print("\n**** Final do campeonato! ****")
+    print("\nPlacar: Você 0 X 3 Computador")
 
 
 print("\nBem-vindo ao jogo do NIM! Escolha:\n")
